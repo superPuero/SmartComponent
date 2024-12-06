@@ -1,9 +1,6 @@
 #pragma once
 
-#include <functional>
-#include <iostream>
-#include <unordered_map>
-#include <type_traits>
+#include "../PrecompiledHeaders.h"
 
 #include "FunctionWrapper.h"
 
