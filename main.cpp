@@ -4,7 +4,7 @@ struct Vec2 {
 	float x, y;
 };
 
-// To make smart component define component wiht memory deallocation logic in destructor, and define appropriate move construtor.
+// To make smart component define component with memory deallocation logic in destructor, and define appropriate move construtor.
 // SmartComponent will take care of memory managing
 struct TransformComponent {
 	Vec2* position;
