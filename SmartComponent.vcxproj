@@ -130,7 +130,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="SmartComponent\PrecompiledHeaders.h" />
-    <ClInclude Include="SmartComponent\src\FunctionWrapper.h" />
     <ClInclude Include="SmartComponent\src\SmartComponent.h" />
   </ItemGroup>
   <ItemGroup>

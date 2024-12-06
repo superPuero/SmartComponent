@@ -28,7 +28,7 @@ struct TransformComponent {
 
 };
 
-void main() {
+int main() {
 
 	//Creating SmartComponent with TransformComponent as a component to wrap aroud
 	SmartComponent smart_component(TransformComponent(5,6));
