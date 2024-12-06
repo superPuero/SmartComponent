@@ -31,7 +31,7 @@ struct TransformComponent {
 int main() {
 
 	//Creating SmartComponent with TransformComponent as a component to wrap aroud
-	SmartComponent smart_component(TransformComponent(5,6));
+	SmartComponent smart_component(TransformComponent(-121,6));
 
 	//SmartComponent is movable, but non-copyable.
 	SmartComponent smart_component2(std::move(smart_component));

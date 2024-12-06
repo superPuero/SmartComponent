@@ -20,9 +20,8 @@ public:
 	template<typename Component>
 	inline SmartComponent(Component&& component) noexcept {
 		data = new Component(std::move(component));
-		destructor_lambda_ptr = [](void* data_l) { delete static_cast<Component*>(data_l); };
+		destructor_lambda_ptr = [](void* data_ptr) { delete static_cast<Component*>(data_ptr); };
 		std::cout << '\n' << "SmartComponent templated move";
-
 	};
 
 	~SmartComponent() {
