@@ -40,5 +40,4 @@ int main() {
 
 	//	Memory managing properties are achived through storing each individual component destructor as a lambda
 	//	Using of std::function as another way to store lambda is possible, but it has too much overhead for my use case
-	//	Also it uses atleast 8x times more space.
 }
