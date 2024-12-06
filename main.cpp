@@ -28,7 +28,7 @@ struct TransformComponent {
 
 };
 
-int main() {
+void main() {
 
 	//Creating SmartComponent with TransformComponent as a component to wrap aroud
 	SmartComponent smart_component(TransformComponent(5,6));
@@ -38,7 +38,7 @@ int main() {
 
 	std::cout << '\n' << ((TransformComponent*)smart_component2.data)->position->x;
 
-	//	Memory managing properties are achived through storing each individual component destructor as a lambda in a FunctiontWrapper member class (src/FunctionWrapper.h)
+	//	Memory managing properties are achived through storing each individual component destructor as a lambda
 	//	Using of std::function as another way to store lambda is possible, but it has too much overhead for my use case
 	//	Also it uses atleast 8x times more space.
 }

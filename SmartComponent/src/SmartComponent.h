@@ -2,35 +2,32 @@
 
 #include "../PrecompiledHeaders.h"
 
-#include "FunctionWrapper.h"
-
 class SmartComponent {
 public:
 	SmartComponent() {
 		data = nullptr;
-		destructor_function = nullptr;
+		destructor_lambda_ptr = nullptr;
 		std::cout << '\n' << "SmartComponent construct";
 	};
 
 	SmartComponent(SmartComponent&& other) noexcept {
 		data = other.data;
-		destructor_function = other.destructor_function;
-		other.destructor_function = nullptr;
+		destructor_lambda_ptr = other.destructor_lambda_ptr;
+		other.destructor_lambda_ptr = nullptr;
 		std::cout << '\n' << "SmartComponent move";
 	};
 
 	template<typename Component>
 	inline SmartComponent(Component&& component) noexcept {
 		data = new Component(std::move(component));
-		destructor_function = new FunctionWrapper([this]() {delete static_cast<Component*>(data); });
+		destructor_lambda_ptr = [](void* data_l) { delete static_cast<Component*>(data_l); };
 		std::cout << '\n' << "SmartComponent templated move";
 
 	};
 
 	~SmartComponent() {
-		if (destructor_function) {
-			destructor_function->invoke();
-			delete destructor_function;
+		if (destructor_lambda_ptr) {
+			destructor_lambda_ptr(data);
 		}
 	};
 
@@ -38,6 +35,5 @@ public:
 	void* data;
 
 private:
-	FunctionWrapperBase* destructor_function;
-
+	void (*destructor_lambda_ptr)(void*);
 };
